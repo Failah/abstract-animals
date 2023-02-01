@@ -14,6 +14,57 @@ Scrivere un programma che istanzi animali che volano o nuotano e richiamare i me
 
 package org.lessons.java.interfaceAnimals;
 
-public class Main {
+import java.util.Scanner;
 
+import org.lessons.java.abstractAnimals.Animale;
+import org.lessons.java.abstractAnimals.Aquila;
+import org.lessons.java.abstractAnimals.Cane;
+import org.lessons.java.abstractAnimals.Delfino;
+import org.lessons.java.abstractAnimals.Passerotto;
+
+public class Main {
+	public static void faiVolare(IVolante animale) {
+		animale.vola();
+	}
+
+	public static void faiNuotare(INuotante animale) {
+		animale.nuota();
+	}
+
+	public static void main(String[] args) {
+
+		Scanner s = new Scanner(System.in);
+		while (true) {
+			System.out.println("Vuoi istanziare un animale? (s/n)");
+			String risposta = s.nextLine();
+			if (risposta.equals("n")) {
+				break;
+			}
+			System.out.println("Che tipo di animale vuoi istanziare? (cane[c], passerotto[p], aquila[a], delfino[d])");
+			String tipoAnimale = s.nextLine();
+			Animale animale;
+			if (tipoAnimale.equals("c")) {
+				animale = new Cane();
+			} else if (tipoAnimale.equals("p")) {
+				animale = new Passerotto();
+			} else if (tipoAnimale.equals("a")) {
+				animale = new Aquila();
+			} else if (tipoAnimale.equals("d")) {
+				animale = new Delfino();
+			} else {
+				System.out.println("Tipo di animale non valido, inserisci un input valido");
+				continue;
+			}
+			animale.dormi();
+			animale.verso();
+			animale.mangia();
+		}
+		s.close();
+		System.out.println("Programma terminato!");
+
+		Aquila aquila = new Aquila();
+		Delfino delfino = new Delfino();
+		faiVolare(aquila);
+		faiNuotare(delfino);
+	}
 }

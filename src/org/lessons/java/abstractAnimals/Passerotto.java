@@ -1,6 +1,8 @@
 package org.lessons.java.abstractAnimals;
 
-public class Passerotto extends Animale {
+import org.lessons.java.interfaceAnimals.IVolante;
+
+public class Passerotto extends Animale implements IVolante {
 
 	@Override
 	public void verso() {
@@ -11,6 +13,11 @@ public class Passerotto extends Animale {
 	@Override
 	public void mangia() {
 		System.out.println("Mangia i semi");
+	}
+
+	@Override
+	public void vola() {
+		System.out.println("Sto volando!!!");
 	}
 
 }
