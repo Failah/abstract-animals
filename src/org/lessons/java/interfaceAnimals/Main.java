@@ -47,24 +47,29 @@ public class Main {
 				animale = new Cane();
 			} else if (tipoAnimale.equals("p")) {
 				animale = new Passerotto();
+				if (animale instanceof IVolante) {
+					faiVolare((IVolante) animale);
+				}
 			} else if (tipoAnimale.equals("a")) {
 				animale = new Aquila();
+				if (animale instanceof IVolante) {
+					faiVolare((IVolante) animale);
+				}
 			} else if (tipoAnimale.equals("d")) {
 				animale = new Delfino();
+				if (animale instanceof INuotante) {
+					faiNuotare((INuotante) animale);
+				}
 			} else {
 				System.out.println("Tipo di animale non valido, inserisci un input valido");
 				continue;
 			}
+
 			animale.dormi();
 			animale.verso();
 			animale.mangia();
 		}
 		s.close();
 		System.out.println("Programma terminato!");
-
-		Aquila aquila = new Aquila();
-		Delfino delfino = new Delfino();
-		faiVolare(aquila);
-		faiNuotare(delfino);
 	}
 }
